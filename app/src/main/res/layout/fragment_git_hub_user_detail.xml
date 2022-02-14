@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/searchLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.GitHubUserDetailFragment">
+
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="@string/searchButtonText"
+        app:layout_constraintLeft_toRightOf="@+id/searchTextview"
+        app:layout_constraintWidth_percent="0.2"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/searchTextview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/rounded_edittext"
+        android:hint="@string/searchGitHubUser"
+        android:singleLine="true"
+        android:theme="@style/SearchBoxStyle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <ProgressBar
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/list_error"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/loadingDataErrorMsg"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchTextview">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/userDetailLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailConstraintLayout">
+
+
+            <ImageView
+                android:id="@+id/fullAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:maxHeight="450dp"
+                app:layout_constraintBottom_toTopOf="@+id/userDetailLayout"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@id/userDetailLayout"
+                app:layout_constraintTop_toTopOf="@id/userDetailLayout"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/gitHubUserName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/username"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/fullAvatar"
+                app:layout_constraintWidth_percent="0.3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/gitHubUserNameValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="Value"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/gitHubUserName"
+                app:layout_constraintTop_toBottomOf="@+id/fullAvatar"
+                app:layout_constraintWidth_percent="0.7" />
+
+
+            <TextView
+                android:id="@+id/gitHubName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/name"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubUserName"
+                app:layout_constraintWidth_percent="0.3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/gitHubNameValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="Value"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/gitHubUserName"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubUserNameValue"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <TextView
+                android:id="@+id/gitHubUserFollower"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/follower"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubName"
+                app:layout_constraintWidth_percent="0.3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/gitHubUserFollowerValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="Value"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/gitHubUserFollower"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubNameValue"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <TextView
+                android:id="@+id/gitHubUserFollowing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="@string/following"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubUserFollower"
+                app:layout_constraintWidth_percent="0.3"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/gitHubUserFollowingValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingTop="5dp"
+                android:text="Value"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/gitHubUserFollowing"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubUserFollowerValue"
+                app:layout_constraintWidth_percent="0.7" />
+
+            <TextView
+                android:id="@+id/gitHubUserDescriptionTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="0dp"
+                android:text="@string/description"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubUserFollowing" />
+
+            <TextView
+                android:id="@+id/gitHubUserDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                app:layout_constraintTop_toBottomOf="@+id/gitHubUserDescriptionTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
