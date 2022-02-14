@@ -1,4 +1,4 @@
-package com.example.githunapp;
+package com.example.githubapp;
 
 import org.junit.Test;
 
