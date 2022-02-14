@@ -9,7 +9,7 @@ public class FollowModel {
 
     @SerializedName("id")
     private Integer id;
-    
+
     @SerializedName("avatar_url")
     private String avatarUrl;
 
