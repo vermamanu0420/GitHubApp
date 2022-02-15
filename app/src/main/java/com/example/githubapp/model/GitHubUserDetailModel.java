@@ -14,7 +14,7 @@ public class GitHubUserDetailModel {
     private String avatarUrl;
 
     @SerializedName("name")
-    private Object name;
+    private String name;
 
     @SerializedName("followers")
     private Integer followers;
@@ -47,11 +47,11 @@ public class GitHubUserDetailModel {
         this.avatarUrl = avatarUrl;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 

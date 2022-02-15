@@ -11,6 +11,7 @@ public class FollowModel {
     private Integer id;
 
     @SerializedName("avatar_url")
+
     private String avatarUrl;
 
     public String getLogin() {
